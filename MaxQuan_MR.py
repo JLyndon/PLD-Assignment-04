@@ -1,18 +1,17 @@
-import math
+def user_inputs():
+    while True:
+        usr_balance = input("Enter your balance: ")
+        cost = input("\nEnter the price of an apple: ")
+        if usr_balance.isdigit() and cost.isdigit() == True:
+            return usr_balance, cost
+        elif usr_balance.isdigit() or cost.isdigit() == True:
+            if usr_balance.isdigit() == False:
+                print("\nYour balance should be in numerical form.\n")
+            else:
+                print("\nThe rpice of an apple should be in numerical form.\n")
+        else:
+            print("\nPlease enter only numerical inputs.\n")
 
-def user_money():
-    usr_balance = float(input("Enter your balance: "))
-    return usr_balance
+fnl_output = user_inputs()
 
-def apl_price():
-    cost = float(input("\nEnter the price of an apple: "))
-    return cost
-
-def general_operator(balance, price):
-    max_no_apl = math.floor(balance/price) 
-    change = balance % price
-    return max_no_apl, change
-
-fnl_output = general_operator(user_money(), apl_price())
-
-print(f"\nYou can buy {fnl_output[0]} apples and your change is {fnl_output[1]:.2f} pesos.")
+print(fnl_output)
