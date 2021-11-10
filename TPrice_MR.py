@@ -1,7 +1,10 @@
 def ProductS_Quant():
-    NumbApl = int(input("\nHow many apples would you like to buy? \n> "))
-    NumbOrng = int(input("\nHow many oranges would you like to buy? \n> "))
-    return NumbApl, NumbOrng
+    NumbApl = input("\nHow many apples would you like to buy? \n> ")
+    NumbOrng = input("\nHow many oranges would you like to buy? \n> ")
+    if NumbApl.replace(",","",10).isdigit() and NumbOrng.replace(",","",10).isdigit() == True:
+        Apl_Q = int(NumbApl.replace(",","",10))
+        Orng_Q = int(NumbOrng.replace(",","",10))
+        return Apl_Q, Orng_Q
 
 def total_(NumApl, NumOrng):
     ttlprc_apl = NumApl*20
