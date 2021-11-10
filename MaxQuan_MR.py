@@ -2,7 +2,7 @@ import math
 
 def user_inputs():
     while True:
-        usr_balance = input("Enter your balance: ")
+        usr_balance = input("\nEnter your balance: ")
         cost = input("\nEnter the price of an apple: ")
         if usr_balance.isdigit() and cost.isdigit() == True:
             money = float(usr_balance)
@@ -16,7 +16,24 @@ def user_inputs():
             if usr_balance.isalpha() == True:
                 print("Your balance should be in numerical form.")
             elif cost.isalpha() == True:
-                print("The price should be in numerical form.")           
+                print("The price should be in numerical form.")
+        else:
+            if "," in usr_balance or cost:
+                print() #Statement for disregarding comma in user inputs.
+
+def CommaReader(Num01, Num02):
+    if "," in Num01 and Num02:
+        Bal_01 = Num01.replace(",","")
+        Cost_02 = Num02.replace(",","")
+        return Bal_01, Cost_02
+    elif "," in Num01:
+        BalanceOnly = Num01.replace(",","")
+        return BalanceOnly, Num02
+    elif "," in Num02:
+        CostOnly = Num02.replace(",","")
+        return Num01, CostOnly
+    else:
+        return Num01, Num02                
 
 def general_operator(balance, price):
     max_no_apl = math.floor(balance/price) 
