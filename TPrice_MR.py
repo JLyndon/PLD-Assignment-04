@@ -18,8 +18,19 @@ def ProductS_Quant():
                     FnlOrng = int(ModNumOrng)
                     return FnlApl, FnlOrng
                 else:
-                    #Adding conditions for decimals.
-                    None
+                    if "." in ModNumApl or ModNumOrng:
+                        ValueChckApl = ModNumApl.split(".")
+                        ValueChckOrng = ModNumOrng.split(".")
+                        if (len(ValueChckApl)) + (len(ValueChckOrng)) == 4: 
+                            if (int(ValueChckApl[1]) > 0) and (int(ValueChckOrng[1]) > 0):
+                                print("\nYou can't purchase a fraction of our products.\nPlease enter whole quantity values.")
+                        elif (len(ValueChckApl)) + (len(ValueChckOrng)) == 3:
+                            if (len(ValueChckApl)) == 2:
+                                if int(ValueChckApl[1]) > 0:
+                                    print("\nYou can't purchase a fraction of an apple.\nPlease enter whole quantity values.")
+                            elif (len(ValueChckApl)) == 1:
+                                if int(ValueChckOrng[1]) > 0:
+                                    print("\nYou can't purchase a fraction of an orange.\nPlease enter whole quantity values.")
 
 def CommaReader(AplInp, OrngInp):
     if "," in AplInp and OrngInp:
@@ -45,4 +56,4 @@ apl_quant, orng_quant = ProductS_Quant()
 
 grnd_total = total_(apl_quant, orng_quant)
 
-print(f"\nThe total amount is {grnd_total}.")
+print(f"\nThe total amount is {grnd_total} Php.")
