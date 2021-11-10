@@ -56,4 +56,4 @@ apl_quant, orng_quant = ProductS_Quant()
 
 grnd_total = total_(apl_quant, orng_quant)
 
-print(f"\nThe total amount is {grnd_total} Php.")
+print(f"\nThe total amount is {grnd_total:,} Php.")
