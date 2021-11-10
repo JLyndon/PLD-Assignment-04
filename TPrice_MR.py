@@ -6,6 +6,10 @@ def ProductS_Quant():
             InitApl = int(NumbApl)
             InitOrng = int(NumbOrng)
             return InitApl, InitOrng
+        elif NumbApl.isalpha() or NumbOrng.isalpha() == True:
+            print("\nInputs must be both numerical values.")
+        elif NumbApl.isspace() or NumbOrng.isspace() == True:
+            print("\nPlease fill all the blanks.")
         else:
             if NumbApl.replace(",","",10).isdigit() and NumbOrng.replace(",","",10).isdigit() == True:
                 Apl_Q = int(NumbApl.replace(",","",10))
