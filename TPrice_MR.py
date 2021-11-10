@@ -24,13 +24,26 @@ def ProductS_Quant():
                         if (len(ValueChckApl)) + (len(ValueChckOrng)) == 4: 
                             if (int(ValueChckApl[1]) > 0) and (int(ValueChckOrng[1]) > 0):
                                 print("\nYou can't purchase a fraction of our products.\nPlease enter whole quantity values.")
+                            elif (int(ValueChckApl[1]) == 0) and (int(ValueChckOrng[1]) == 0):
+                                EligiApl= int(ValueChckApl[0])
+                                EligiOrng = int(ValueChckOrng[0])
+                                return EligiApl, EligiOrng
                         elif (len(ValueChckApl)) + (len(ValueChckOrng)) == 3:
                             if (len(ValueChckApl)) == 2:
                                 if int(ValueChckApl[1]) > 0:
                                     print("\nYou can't purchase a fraction of an apple.\nPlease enter whole quantity values.")
+                                elif int(ValueChckApl[1]) == 0:
+                                    EligiApl= int(ValueChckApl[0])
+                                    EligiOrng = int(ValueChckOrng[0])
+                                    return EligiApl, EligiOrng
                             elif (len(ValueChckApl)) == 1:
                                 if int(ValueChckOrng[1]) > 0:
                                     print("\nYou can't purchase a fraction of an orange.\nPlease enter whole quantity values.")
+                                elif int(ValueChckOrng[1]) == 0:
+                                    EligiApl= int(ValueChckApl[0])
+                                    EligiOrng = int(ValueChckOrng[0])
+                                    return EligiApl, EligiOrng
+                                                     
 
 def CommaReader(AplInp, OrngInp):
     if "," in AplInp and OrngInp:
