@@ -28,6 +28,10 @@ def ProductS_Quant():
                                 EligiApl= int(ValueChckApl[0])
                                 EligiOrng = int(ValueChckOrng[0])
                                 return EligiApl, EligiOrng
+                            elif (int(ValueChckApl[1]) == 0) and (int(ValueChckOrng[1]) > 0):
+                                print("\nYou can't purchase a fraction of an orange.\nPlease enter whole quantity values.")
+                            elif (int(ValueChckApl[1]) > 0) and (int(ValueChckOrng[1]) == 0):
+                                print("\nYou can't purchase a fraction of an apple.\nPlease enter whole quantity values.")
                         elif (len(ValueChckApl)) + (len(ValueChckOrng)) == 3:
                             if (len(ValueChckApl)) == 2:
                                 if int(ValueChckApl[1]) > 0:
