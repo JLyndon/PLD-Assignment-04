@@ -11,10 +11,29 @@ def ProductS_Quant():
         elif NumbApl.isspace() or NumbOrng.isspace() == True:
             print("\nPlease fill all the blanks.")
         else:
-            if NumbApl.replace(",","",10).isdigit() and NumbOrng.replace(",","",10).isdigit() == True:
-                Apl_Q = int(NumbApl.replace(",","",10))
-                Orng_Q = int(NumbOrng.replace(",","",10))
-                return Apl_Q, Orng_Q
+            if "," in NumbApl or NumbOrng:
+                ModNumApl, ModNumOrng = CommaReader(NumbApl, NumbOrng)
+                if ModNumApl.isdigit() and ModNumOrng.isdigit() == True:
+                    FnlApl = int(ModNumApl)
+                    FnlOrng = int(ModNumOrng)
+                    return FnlApl, FnlOrng
+                else:
+                    #Adding conditions for decimals.
+                    None
+
+def CommaReader(AplInp, OrngInp):
+    if "," in AplInp and OrngInp:
+        Price_01 = AplInp.replace(",","")
+        Price_02 = OrngInp.replace(",","")
+        return Price_01, Price_02
+    elif "," in AplInp:
+        AplprcOnly = AplInp.replace(",","")
+        return AplprcOnly, OrngInp
+    elif "," in OrngInp:
+        OrngprcOnly = OrngInp.replace(",","")
+        return AplInp, OrngprcOnly
+    else:
+        return AplInp, OrngInp
 
 def total_(NumApl, NumOrng):
     ttlprc_apl = NumApl*20
