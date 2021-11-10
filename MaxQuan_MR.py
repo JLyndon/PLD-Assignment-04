@@ -5,23 +5,23 @@ def user_inputs():
         usr_balance = input("\nEnter your balance: ")
         cost = input("\nEnter the price of an apple: ")
         if usr_balance.isdigit() and cost.isdigit() == True:
-            money = float(usr_balance)
-            price = float(cost)
-            return money, price
+            return usr_balance, cost
         elif usr_balance.isspace() or cost.isspace() == True:
             print("Please fill all the blanks.")
         elif usr_balance.isalpha() and cost.isalpha() == True:
                 print("Inputs should be in numerical form.")
-        elif (usr_balance.isalpha() and cost.isalpha() == True) == False:
+        elif usr_balance.isalpha() or cost.isalpha() == True:
             if usr_balance.isalpha() == True:
                 print("Your balance should be in numerical form.")
             elif cost.isalpha() == True:
                 print("The price should be in numerical form.")
         else:
-            if "," in usr_balance or cost:
-                print() #Statement for disregarding comma in user inputs.
+            if "," in usr_balance or cost == True:
+                DC_Balance, DC_Cost = CommaReader_Gen(usr_balance, cost)
+                if DC_Balance.replace(".","").isdigit() and DC_Cost.replace(".","").isdigit() == True:
+                    return DC_Balance, DC_Cost
 
-def CommaReader(Num01, Num02):
+def CommaReader_Gen(Num01, Num02):
     if "," in Num01 and Num02:
         Bal_01 = Num01.replace(",","")
         Cost_02 = Num02.replace(",","")
@@ -36,8 +36,10 @@ def CommaReader(Num01, Num02):
         return Num01, Num02                
 
 def general_operator(balance, price):
-    max_no_apl = math.floor(balance/price) 
-    change = balance % price
+    dvnd = float(balance)
+    dvsr = float(price)
+    max_no_apl = math.floor(dvnd/dvsr) 
+    change = dvnd % dvsr
     return max_no_apl, change
 
 dividend, divisor = user_inputs()
